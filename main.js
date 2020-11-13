@@ -5,3 +5,7 @@ console.log(a *b);
 let essa = _ => 2;
 
 console.log(essa());
+
+let myStr = `Hi bitch ${essa()}`
+
+console.log(myStr)
