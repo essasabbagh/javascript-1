@@ -22,8 +22,11 @@ const myObj = {
 // const {name, age ,city ,skill: {html , css ,js:[one ,two]}} = myObj;
 function infoShow ({name, age ,city ,skill: {html , css ,js:[one ,two]}}) {
 
-    console.log(`My name is ${name},I have ${age}, and I live in the ${city}, 
-            My skill progrras in HTML is ${html}, and in CSS is ${css}, and I know ${one},and ${two}, framwork `);
+    console.log(`My name is ${name}
+    ,I have ${age}, and I live in the ${city}, 
+    My skill progrras in HTML is ${html},
+    and in CSS is ${css},
+    and I know ${one},and ${two}, framwork `);
 }
 
 infoShow(myObj);
