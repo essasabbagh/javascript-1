@@ -3,3 +3,5 @@ hi bro
 fish
 
 # Finish DOM js playlist
+
+# Finish ECMA6 playlist
