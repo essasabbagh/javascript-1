@@ -71,3 +71,51 @@ const myPromise = new Promise ((resolve , reject) => {
     (resolve) => console.log(resolve),
     (reject) => console.log(reject)
 )
+
+// XMLHttpRequest :  
+// "https://api.github.com/users/essasabbagh"
+// "https://api.github.com/users/essasabbagh/repos"
+
+function getRepos (apiURL) {
+    let myReq = new XMLHttpRequest();
+    myReq.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(JSON.parse(this.responseText.length));
+            console.log(JSON.parse(this.responseText));
+        }
+    }
+    myReq.open("GET" , apiURL , true);
+    myReq.send();
+}
+// getRepos("https://api.github.com/users/essasabbagh/repos");
+
+const getFirstRepo = (apiURL) => {
+    return new Promise ((resolve,reject) => {
+        let myReq = new XMLHttpRequest();
+        myReq.onload = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                resolve(JSON.parse(this.responseText)[0].name);
+                // console.log(JSON.parse(this.responseText)[0]);
+            } else {
+                reject(Error(this.statusText));
+            }
+        }
+    myReq.open("GET" , apiURL , true);
+    myReq.send();
+    })
+};
+
+// getFirstRepo("https://api.github.com/users/essasabbagh/repos").then(
+//     (result) => console.log(result),
+//     (error) => console.log(error)
+// )
+
+getFirstRepo("https://api.github.com/users/essasabbagh/repos").then(
+    (result) => {
+        let newEl = document.createElement("div");
+        let textEl = document.createTextNode(result);
+        newEl.appendChild(textEl);
+        document.body.appendChild(newEl);
+    },
+    (error) => console.log(error)
+)
